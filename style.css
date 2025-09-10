@@ -1,0 +1,111 @@
+:root {
+  --angle: 60deg;
+}
+
+.waves > li {
+  display: contents;
+}
+
+.principal {
+  position: relative;
+  z-index: 2;
+
+  li {
+    transform: translateY(
+      calc(sin(var(--angle) * var(--i)) * var(--shape-size) / 2)
+    );
+  }
+}
+
+.secondary {
+  position: absolute;
+
+  li {
+    transform: translateY(
+      calc(cos(var(--angle) * var(--i) + var(--angle)) * var(--shape-size) / 2)
+    );
+  }
+}
+
+@layer demo {
+  :root {
+    --outer-spacing: 3rem;
+    --shape-size: 5rem;
+  }
+
+  * {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: sans-serif;
+
+    color: white;
+    color-scheme: dark light;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    height: 100dvh;
+    width: max-content;
+    overflow: auto hidden;
+    padding: var(--outer-spacing);
+
+    background: #262325;
+  }
+
+  ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 10px 18px 10px;
+
+    width: var(--shape-size);
+    height: var(--shape-size);
+    border-radius: 50%;
+  }
+
+  .principal {
+    li {
+      background-color: #403e3e;
+    }
+  }
+
+  .secondary {
+    li {
+      background-color: #fff1;
+    }
+  }
+
+  form {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 6px;
+
+    width: max-content;
+
+    background-color: #fff2;
+
+    span {
+      display: inline-block;
+      width: 3ch;
+    }
+  }
+}
